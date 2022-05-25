@@ -1,31 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <table style="border: 1px solid;">
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h2>every remote work offers in one place</h2>
+        <p class="text-secondary">The page is refreshing every x minutes. Sources: NoFlubbJobs</p>
+    </div>
+</div>
+    <div class="row">
+    <div class="col-xl-10 offset-xl-1">
+        <div class="table-responsive">
+<table class="table table-striped table-hover table-borderless">
+        <thead>
+          <tr>
+            <th>title</th>
+            <th>company</th>
+            <th>link</th>
+            <th>source</th>
+          </tr>
+        </thead>
         <tbody>
-            <tr>
-                <th>title</th>
-                <th>company</th>
-                <th>link</th>
-                <th>source</th>
-            </tr>
-            <tr>
-                <td>test1</td>
-                <td>test2</td>
-                <td>test3</td>
-                <td>test4</td>
-            </tr>
-            <tr>
-                <td>test1</td>
-                <td>test2</td>
-                <td>test3</td>
-                <td>test4</td>
-            </tr>
+    {% if d %}
+    {% for i in d %}
+      <tr>
+        <td>{{i.title}}</td>
+        <td>{{i.company}}</td>
+        <td><a href="https://nofluffjobs.com{{i.link}}" target="_blank" style="text-decoration: none;">visit</a> </td>
+        <td>{{i.source}}</td>
+      </tr>
+    {% endfor %}
+    {% endif %}
         </tbody>
     </table>
-</body>
-</html>
+        </div>
+    </div>
+</div>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+{% endblock %}
+
